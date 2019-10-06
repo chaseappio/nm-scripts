@@ -15,21 +15,21 @@ This command must be run on first use to configure the default `VHD`s size and t
 ### nm-create
 This command creates a `VHD` file and mount it to `node_modules` under the current directory
 
-`nm-create` -Folder <Path>
+`nm-create -Folder <Path>`
 
 * `Folder` is optional and defaults to current directory
 
 ### nm-clear
 This command format the current mounted `node_modules`
 
-`nm-clear` -Folder <Path>
+`nm-clear -Folder <Path>`
 
 * `Folder` is optional and defaults to current directory
 
 ### nm-delete
 This command dismount `node_modules` and delete the `VHD` file.
 
-`nm-delete` -Folder <Path>
+`nm-delete -Folder <Path>`
 
 * `Folder` is optional and defaults to current directory
 
