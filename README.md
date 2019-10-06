@@ -1,11 +1,11 @@
 # nm-scripts
 
-The `nm-scripts` was intented to solve the problem of the **endless** amount of time taken to delete `node_moudles* directory.  
+The `nm-scripts` was intented to solve the problem of the **endless** amount of time takes to delete `node_moudles` directory.  
 
-The idea is to create a `VHD` (Virtual Hard Drive) file for each `node_modules` directory that we want maintain then simply mount it in the relevant path.  
+The idea is to create a `VHD` (Virtual Hard Drive) file for each `node_modules` directory that we want to maintain and then simply mount it in the relevant path.  
 When we want to clear `node_modules` we can simply format the mounted `VHD` volume which takes few seconds.  
 
-The repository contains 4 scripts, it is recommended to clone the repository and put the directory in the `PATH`.
+The repository contains 4 scripts and it is recommended to clone the repository and put the directory in the `PATH`.
 
 ### nm-config
 This command must be run on first use to configure the default `VHD`s size and the `VHD`s directory
@@ -33,3 +33,7 @@ This command dismount `node_modules` and delete the `VHD` file.
 
 * `Folder` is optional and defaults to current directory
 
+
+## Notes
+* Scripts need to be run elevated as adminstrator
+* It works only in Windows
