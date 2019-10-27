@@ -47,6 +47,19 @@ function Get-VHD {
     $config = Read-Config
     return Join-Path -Path $config.DisksFolder -ChildPath "$hash.vhd"
 }
+
+function Get-Startup-Script {
+    param (
+        [string]
+        $folder
+    )
+
+    $folder = Get-WorkingFolder -Folder $folder
+    $hash = Get-StringHash $folder
+    $config = Read-Config
+    return Join-Path -Path $config.DisksFolder -ChildPath "$hash.txt"
+}
+
 function Write-Config {
     param (
         [Int32] $DefaultDiskSize= 1GB,

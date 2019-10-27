@@ -35,5 +35,8 @@ This command dismount `node_modules` and delete the `VHD` file.
 
 
 ## Notes
-* Scripts need to be run elevated as adminstrator
+* Scripts need to be run elevated as administrator
 * It works only in Windows
+* Hyper-V should be installed to have the ability to create VHD files (https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+
+
