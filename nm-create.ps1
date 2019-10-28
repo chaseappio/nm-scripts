@@ -30,7 +30,7 @@ if(Test-Path $vhdpath)
     }
 }
 
-$partition = New-VHD -Path $vhdpath -Fixed -SizeBytes $vhdsize |
+$partition = New-VHD -Path $vhdpath -SizeBytes $vhdsize |
 Mount-VHD -NoDriveLetter -Passthru |
 Initialize-Disk -Passthru |
 New-Partition -UseMaximumSize 
