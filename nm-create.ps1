@@ -1,6 +1,8 @@
 
 param (
-    [string] $folder
+    [string] $folder,
+    [Int] $DiskSize,
+    [bool] $DynamicDisk
 )
     
 $ErrorActionPreference = "Stop"
@@ -11,7 +13,16 @@ $folder = Get-WorkingFolder -Folder $folder
 
 $hash = Get-StringHash $folder
 $config = Read-Config
+
+
 $vhdsize = $config.DefaultDiskSize
+if ($PSBoundParameters.ContainsKey('DiskSize'))
+{
+    $vhdsize = $DiskSize
+}
+
+$dynamic = if ($PSBoundParameters.ContainsKey('DynamicDisk')) { $DynamicDisk } else { $config.DynamicDisk }
+
 $vhdpath = Get-VHD
 $startup = Get-Startup-Script
 
@@ -30,7 +41,15 @@ if(Test-Path $vhdpath)
     }
 }
 
-$partition = New-VHD -Path $vhdpath -SizeBytes $vhdsize |
+$vhdparams = @{
+    Path = $vhdpath
+    SizeBytes = $vhdsize 
+}
+if (!$dynamic) {
+    $vhdparams.Fixed = $true 
+} 
+
+$partition = New-VHD @vhdparams |
 Mount-VHD -NoDriveLetter -Passthru |
 Initialize-Disk -Passthru |
 New-Partition -UseMaximumSize 
