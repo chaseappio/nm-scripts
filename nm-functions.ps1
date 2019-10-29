@@ -62,6 +62,7 @@ function Get-Startup-Script {
 
 function Write-Config {
     param (
+        [bool] $DynamicDisk,
         [Int32] $DefaultDiskSize= 1GB,
         [Parameter(Mandatory = $true)]
         [string] $DisksFolder
@@ -72,6 +73,7 @@ function Write-Config {
     $settings = @{}
     $settings.DefaultDiskSize = $DefaultDiskSize
     $settings.DisksFolder = $DisksFolder
+    $settings.DynamicDisk = $DynamicDisk
 
     ConvertTo-Json -InputObject $settings | Out-File $settingsPath
 }
