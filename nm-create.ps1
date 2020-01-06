@@ -1,4 +1,3 @@
-
 param (
     [string] $folder,
     [Int] $DiskSize,
@@ -6,6 +5,13 @@ param (
 )
     
 $ErrorActionPreference = "Stop"
+
+# powershell 6 does not support New-JobTrigger
+if ($PSVersionTable.PSVersion.Major -gt 5)
+{
+    powershell -File "$($MyInvocation.MyCommand.Definition)"
+    exit $LASTEXITCODE
+}
 
 . "$PSScriptRoot\nm-functions.ps1"
 
